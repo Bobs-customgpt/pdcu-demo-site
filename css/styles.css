@@ -81,6 +81,8 @@ button{ font-family:inherit; cursor:pointer; }
 .c-search__input{ flex:1; height:27px; margin:0; padding:0; border:0; outline:0; background:#f2f2f2; color:#000; font:700 16px "Gotham", Arial, sans-serif; }
 .c-search__input::placeholder{ color:#000; opacity:1; }
 .c-search__form button{ position:relative; top:2px; border:0; background:none; padding:0 0 0 10px; }
+.c-search__ai{ flex:none; margin-left:8px; padding:2px 7px; border-radius:20px; background:var(--purple); color:#fff; font-size:10.5px; font-weight:700; letter-spacing:.6px; line-height:1.4; }
+.c-search:focus-within{ box-shadow:0 0 0 2px rgba(70,46,141,.25); }
 .c-search__form button svg{ width:23px; height:23px; }
 
 .navigation__right{ display:flex; align-items:center; position:relative; }
@@ -423,6 +425,48 @@ button{ font-family:inherit; cursor:pointer; }
 .cgpt-setup h4{ margin:0 0 6px; color:var(--purple); font-size:16px; font-weight:700; }
 .cgpt-setup code{ display:block; margin:8px 0; padding:8px 10px; background:#f2f2f2; border-radius:8px; font-size:12px; word-break:break-all; }
 .cgpt-setup[hidden]{ display:none; }
+
+/* ------------------------------------------------------------
+   AI search results panel (SGE)
+   ------------------------------------------------------------ */
+.sge-backdrop{ position:fixed; inset:0; z-index:8000; background:rgba(12,10,40,.45); backdrop-filter:blur(1.5px); }
+.sge-backdrop[hidden],.sge-panel[hidden]{ display:none; }
+.sge-panel{
+  position:fixed; top:104px; left:50%; z-index:8100; width:min(920px, calc(100vw - 32px)); max-height:calc(100vh - 124px);
+  display:flex; flex-direction:column; transform:translateX(-50%);
+  background:#fff; border-radius:20px; border-top:6px solid var(--purple); box-shadow:0 30px 80px rgba(0,0,0,.35);
+  animation:sgeDrop .22s ease-out;
+}
+@keyframes sgeDrop{ from{ opacity:0; transform:translateX(-50%) translateY(-12px); } to{ opacity:1; transform:translateX(-50%) translateY(0); } }
+.sge-panel::before{ content:""; position:absolute; top:-18px; left:50%; width:24px; height:24px; margin-left:-12px; background:var(--purple); transform:rotate(45deg); border-radius:4px; }
+.sge-panel__head{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 22px 14px; border-bottom:1px solid var(--gray); }
+.sge-panel__titles{ display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 14px; min-width:0; }
+.sge-panel__label{ display:inline-flex; align-items:center; gap:8px; color:var(--blue); font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
+.sge-panel__label::before{ content:"AI"; padding:2px 7px; border-radius:20px; background:var(--purple); color:#fff; font-size:10.5px; letter-spacing:.6px; }
+.sge-panel__query{ color:#000; font-size:22px; line-height:1.25; }
+.sge-panel__query::before{ content:"\201C"; } .sge-panel__query::after{ content:"\201D"; }
+.sge-panel__close{ flex:none; width:38px; height:38px; border:0; border-radius:50%; background:#f2f2f2; color:#333; font-size:26px; line-height:1; transition:background .15s; }
+.sge-panel__close:hover{ background:var(--gray); }
+.sge-panel__body{ position:relative; flex:1 1 auto; min-height:0; height:min(560px, calc(100vh - 260px)); overflow:auto; background:#fafafa; }
+#customgpt_chat{ height:100%; }
+#customgpt_chat iframe{ display:block; width:100%; min-height:100%; }
+.sge-panel__loading{ position:absolute; inset:0; z-index:1; display:flex; align-items:center; justify-content:center; gap:12px; background:#fafafa; color:var(--gray-text); font-size:16px; }
+.sge-panel__loading[hidden]{ display:none; }
+.sge-panel__spinner{ width:22px; height:22px; border:3px solid var(--gray); border-top-color:var(--blue); border-radius:50%; animation:sgeSpin .8s linear infinite; }
+@keyframes sgeSpin{ to{ transform:rotate(360deg); } }
+.sge-panel__foot{ display:flex; justify-content:space-between; gap:16px; padding:12px 22px 14px; border-top:1px solid var(--gray); color:var(--gray-text); font-size:13px; line-height:1.45; }
+.sge-panel__foot a{ color:var(--blue-link); text-decoration:underline; }
+.sge-panel__foot-right{ text-align:right; }
+body.sge-open{ overflow:hidden; }
+@media (max-width:767px){
+  .sge-panel{ top:12px; width:calc(100vw - 16px); max-height:calc(100vh - 24px); border-radius:16px; }
+  .sge-panel::before{ display:none; }
+  .sge-panel__body{ height:calc(100vh - 210px); }
+  .sge-panel__query{ font-size:18px; }
+  .sge-panel__foot{ flex-direction:column; gap:6px; }
+  .sge-panel__foot-right{ text-align:left; }
+  .c-search__ai{ display:none; }
+}
 
 /* ------------------------------------------------------------
    Responsive

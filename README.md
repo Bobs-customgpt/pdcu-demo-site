@@ -12,10 +12,11 @@ Not affiliated with or endorsed by People Driven Credit Union. Internal sales/de
 - `config.js` — paste the CustomGPT agent `p_id` / `p_key` here to go live
 - `assets/` — logo, icons, photos and the Gotham Book webfont pulled from the live site
 
-## Connect the agent
-1. In CustomGPT, open the agent → Deploy → Embed → Live Chat and copy `p_id` and `p_key`.
-2. Paste them into `config.js` (or test with `index.html?p_id=...&p_key=...`).
-3. Until an agent is connected, a purple "Chat with us" placeholder button explains the setup.
+## The two CustomGPT.ai agents (set in `config.js`)
+1. **Floating chat** (bottom-right bubble): CustomGPT project 100838 via `chat.js`. Override for a test with `index.html?p_id=...&p_key=...`.
+2. **AI search in the header search bar**: CustomGPT project 100839 via `sge.js` (Search Generative Experience). Submitting the search pill opens a containerized results panel under the header (dimmed backdrop, query in the title, close button, PDCU footer hints). Each search re-injects `sge.js` with the query as its `prompt` attribute, so results render in place with no page reload; the query is also mirrored to `?q=` so a results view can be deep-linked (`index.html?q=Do+you+offer+RV+loans`). Escape, the backdrop, or the × closes it.
+
+If either pair of values is blank, the chat falls back to a purple "Chat with us" placeholder that explains the setup.
 
 ## Local preview
 ```bash

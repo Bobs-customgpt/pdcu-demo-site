@@ -81,16 +81,77 @@
     h.addEventListener('click', function () { h.classList.toggle('is-active'); });
   });
 
-  /* header search: inert on the demo site (the AI agent handles questions) */
-  var search = document.querySelector('.c-search__form');
-  if (search) search.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var q = search.querySelector('input').value.trim();
-    if (window.CustomGPTDemo && window.CustomGPTDemo.ask) window.CustomGPTDemo.ask(q);
-  });
-
-  /* ---------- CustomGPT.ai agent ---------- */
+  /* ---------- header search -> CustomGPT Search Generative Experience ---------- */
   var cfg = window.DEMO_CONFIG || {};
+  var sgeCfg = { pid: cfg.sge_p_id || '', pkey: cfg.sge_p_key || '', div: cfg.sge_div_id || 'customgpt_chat' };
+  var panel = document.getElementById('sgePanel');
+  var backdrop = document.getElementById('sgeBackdrop');
+  var searchForm = document.querySelector('.c-search__form');
+  var searchInput = searchForm ? searchForm.querySelector('input') : null;
+  var sgeSeq = 0;
+
+  function sgeClose() {
+    if (!panel) return;
+    panel.hidden = true; backdrop.hidden = true;
+    document.body.classList.remove('sge-open');
+  }
+  function sgeOpen(q) {
+    panel.hidden = false; backdrop.hidden = false;
+    document.body.classList.add('sge-open');
+    document.getElementById('sgeQuery').textContent = q;
+  }
+  function runSearch(q) {
+    q = (q || '').trim();
+    if (!q || !panel) return;
+    if (!sgeCfg.pid || !sgeCfg.pkey) { window.CustomGPTDemo && window.CustomGPTDemo.showSetup && window.CustomGPTDemo.showSetup(); return; }
+    if (searchInput) searchInput.value = q;
+    sgeOpen(q);
+    var host = document.getElementById(sgeCfg.div);
+    var loading = document.getElementById('sgeLoading');
+    host.innerHTML = '';
+    loading.hidden = false;
+    // keep the query shareable in the URL (no reload)
+    try { var u = new URL(location.href); u.searchParams.set('q', q); history.replaceState(null, '', u.toString()); } catch (e) {}
+    // sge.js reads its options from the script tag and renders an iframe into div_id; re-inject per search
+    var mySeq = ++sgeSeq;
+    var prev = document.getElementById('sgeScript');
+    if (prev) prev.remove();
+    var s = document.createElement('script');
+    s.id = 'sgeScript';
+    s.src = 'https://cdn.customgpt.ai/js/sge.js?v=' + mySeq;
+    s.defer = true;
+    s.setAttribute('div_id', sgeCfg.div);
+    s.setAttribute('p_id', sgeCfg.pid);
+    s.setAttribute('p_key', sgeCfg.pkey);
+    s.setAttribute('prompt', q);
+    s.setAttribute('height', '100%');
+    s.onerror = function () { if (mySeq === sgeSeq) loading.innerHTML = 'The AI search script could not be loaded. Check your connection and try again.'; };
+    document.body.appendChild(s);
+    // hide the loading veil once the iframe arrives and finishes loading
+    var obs = new MutationObserver(function () {
+      var f = host.querySelector('iframe');
+      if (!f) return;
+      obs.disconnect();
+      var done = function () { if (mySeq === sgeSeq) loading.hidden = true; };
+      f.addEventListener('load', done);
+      setTimeout(done, 6000);
+    });
+    obs.observe(host, { childList: true });
+    setTimeout(function () { if (mySeq === sgeSeq && !host.querySelector('iframe')) loading.innerHTML = 'No response from the search agent yet. Try again or use the chat bubble.'; }, 12000);
+  }
+  if (searchForm) {
+    searchForm.addEventListener('submit', function (e) { e.preventDefault(); runSearch(searchInput.value); });
+  }
+  if (panel) {
+    document.getElementById('sgeClose').addEventListener('click', sgeClose);
+    backdrop.addEventListener('click', sgeClose);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) sgeClose(); });
+    var initial = new URLSearchParams(location.search);
+    var q0 = initial.get('q') || initial.get('s') || initial.get('query') || initial.get('search');
+    if (q0) { window.addEventListener('load', function () { runSearch(q0); }); }
+  }
+
+  /* ---------- CustomGPT.ai floating chat agent ---------- */
   var params = new URLSearchParams(location.search);
   var pid = params.get('p_id') || cfg.p_id || '';
   var pkey = params.get('p_key') || cfg.p_key || '';
@@ -105,7 +166,7 @@
       }
     };
     document.body.appendChild(s);
-    window.CustomGPTDemo = { ask: function () { /* the floating widget is the entry point */ } };
+    window.CustomGPTDemo = { ask: runSearch };
   }
 
   function showPlaceholder() {
@@ -123,7 +184,7 @@
     btn.addEventListener('click', function () { panel.hidden = !panel.hidden; });
     document.body.appendChild(btn);
     document.body.appendChild(panel);
-    window.CustomGPTDemo = { ask: function () { panel.hidden = false; } };
+    window.CustomGPTDemo = { ask: runSearch, showSetup: function () { panel.hidden = false; } };
   }
 
   if (pid && pkey) loadAgent(); else showPlaceholder();
