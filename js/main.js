@@ -85,19 +85,19 @@
   var cfg = window.DEMO_CONFIG || {};
   var sgeCfg = { pid: cfg.sge_p_id || '', pkey: cfg.sge_p_key || '', div: cfg.sge_div_id || 'customgpt_chat' };
   var panel = document.getElementById('sgePanel');
-  var backdrop = document.getElementById('sgeBackdrop');
+  var searchArea = document.querySelector('.search-area');
   var searchForm = document.querySelector('.c-search__form');
   var searchInput = searchForm ? searchForm.querySelector('input') : null;
   var sgeSeq = 0;
 
   function sgeClose() {
     if (!panel) return;
-    panel.hidden = true; backdrop.hidden = true;
-    document.body.classList.remove('sge-open');
+    panel.hidden = true;
+    if (searchArea) searchArea.classList.remove('is-open');
   }
   function sgeOpen(q) {
-    panel.hidden = false; backdrop.hidden = false;
-    document.body.classList.add('sge-open');
+    panel.hidden = false;
+    if (searchArea) searchArea.classList.add('is-open');
     document.getElementById('sgeQuery').textContent = q;
   }
   function runSearch(q) {
@@ -144,8 +144,10 @@
   }
   if (panel) {
     document.getElementById('sgeClose').addEventListener('click', sgeClose);
-    backdrop.addEventListener('click', sgeClose);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) sgeClose(); });
+    document.addEventListener('click', function (e) { if (!panel.hidden && !e.target.closest('.search-area')) sgeClose(); });
+    // re-open on focus if there is already a result for the typed query
+    if (searchInput) searchInput.addEventListener('focus', function () { if (panel.hidden && searchInput.value.trim() && document.querySelector('#customgpt_chat iframe')) { panel.hidden = false; searchArea.classList.add('is-open'); } });
     var initial = new URLSearchParams(location.search);
     var q0 = initial.get('q') || initial.get('s') || initial.get('query') || initial.get('search');
     if (q0) { window.addEventListener('load', function () { runSearch(q0); }); }

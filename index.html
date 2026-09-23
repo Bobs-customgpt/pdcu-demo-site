@@ -34,6 +34,21 @@
             <button type="submit" aria-label="Search"><img src="assets/icons/search.svg" alt="" width="23" height="23"></button>
           </form>
         </div>
+
+        <!-- AI search results dropdown (CustomGPT.ai Search Generative Experience renders into #customgpt_chat) -->
+        <section class="sge-panel" id="sgePanel" role="dialog" aria-labelledby="sgeTitle" hidden>
+          <header class="sge-panel__head">
+            <div class="sge-panel__titles">
+              <span class="sge-panel__label" id="sgeTitle">AI Search</span>
+              <span class="sge-panel__query" id="sgeQuery"></span>
+            </div>
+            <button class="sge-panel__close" id="sgeClose" type="button" aria-label="Close search results">&times;</button>
+          </header>
+          <div class="sge-panel__body">
+            <div class="sge-panel__loading" id="sgeLoading"><span class="sge-panel__spinner"></span> Searching peopledrivencu.org&hellip;</div>
+            <div id="customgpt_chat"></div>
+          </div>
+        </section>
       </div>
       <div class="navigation__right">
         <button class="login login-trigger" type="button" aria-haspopup="true">
@@ -214,25 +229,6 @@
   </div>
 </header>
 
-<!-- AI search results panel (CustomGPT.ai Search Generative Experience renders into #customgpt_chat) -->
-<div class="sge-backdrop" id="sgeBackdrop" hidden></div>
-<section class="sge-panel" id="sgePanel" role="dialog" aria-modal="true" aria-labelledby="sgeTitle" hidden>
-  <header class="sge-panel__head">
-    <div class="sge-panel__titles">
-      <span class="sge-panel__label" id="sgeTitle">PDCU AI Search</span>
-      <span class="sge-panel__query" id="sgeQuery"></span>
-    </div>
-    <button class="sge-panel__close" id="sgeClose" type="button" aria-label="Close search results">&times;</button>
-  </header>
-  <div class="sge-panel__body">
-    <div class="sge-panel__loading" id="sgeLoading"><span class="sge-panel__spinner"></span> Searching peopledrivencu.org&hellip;</div>
-    <div id="customgpt_chat"></div>
-  </div>
-  <footer class="sge-panel__foot">
-    <span id="sgeHint">Ask anything about accounts, loans, rates, branches or digital banking.</span>
-    <span class="sge-panel__foot-right">Answers are generated from PDCU website content. Need account help? Call <a href="tel:+1-844-700-7328">844-700-PDCU</a>.</span>
-  </footer>
-</section>
 
 <main class="g-page-content">
 
