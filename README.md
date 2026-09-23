@@ -25,4 +25,4 @@ python3 -m http.server 8080
 Then open `http://localhost:8080`.
 
 ## Hosting
-Publish via GitHub Pages from the `main` branch, root folder (same pattern as the other demo sites).
+Live at https://bobs-customgpt.github.io/pdcu-demo-site/ (GitHub Pages, `main` branch, root folder, repo Bobs-customgpt/pdcu-demo-site). Push to `main` to redeploy. Deep-link a search result with `?q=`, e.g. https://bobs-customgpt.github.io/pdcu-demo-site/?q=auto+loan+rates
