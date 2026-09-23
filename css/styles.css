@@ -94,6 +94,13 @@ button{ font-family:inherit; cursor:pointer; }
 }
 .navigation__right .login svg{ margin-right:9px; position:relative; top:1px; }
 .navigation__right .login:hover{ background:var(--purple); }
+.navigation__right .try-ai{
+  display:inline-flex; align-items:center; gap:7px; margin-left:16px; padding:9px 18px 10px; border-radius:30px; white-space:nowrap;
+  background:linear-gradient(110deg,#046e9d,#2a9ad6); color:#fff; font-size:15px; font-weight:700; line-height:1; transition:filter .15s;
+}
+.navigation__right .try-ai:hover{ filter:brightness(1.08); }
+.page-assistant .navigation__right .try-ai{ background:var(--purple); }
+
 
 /* login popover */
 .c-login__container{
@@ -456,6 +463,28 @@ button{ font-family:inherit; cursor:pointer; }
 @media (max-width:1100px){ .sge-panel{ left:0; width:min(640px, calc(100vw - 32px)); } }
 @media (max-width:959px){ .sge-panel{ left:0; right:0; width:auto; } .sge-panel__body{ height:min(480px, calc(100vh - 220px)); } }
 @media (max-width:767px){ .sge-panel__query{ font-size:15px; } .c-search__ai{ display:none; } }
+
+
+/* ------------------------------------------------------------
+   Assistant page (inline embed of the live agent)
+   ------------------------------------------------------------ */
+.assistant-hero{ padding:56px 20px 36px; background:linear-gradient(180deg,#f4f2fb 0%,#fff 100%); text-align:center; }
+.assistant-hero .subheading{ margin-bottom:6px; color:var(--blue); font-size:14px; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
+.assistant-hero h1{ margin:0 0 14px; font-size:46px; line-height:1.15; }
+.assistant-hero__lead{ max-width:820px; margin:0 auto; font-size:18px; line-height:1.55; color:#333; }
+.assistant-body{ padding:10px 20px 70px; }
+.assistant-grid{ display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:40px; align-items:start; max-width:1240px; }
+.assistant-card{ border-radius:24px; box-shadow:0 12px 40px rgba(70,46,141,.18); background:#fff; }
+#customgpt_assistant .cgptcb-embed-chat-box-container{ height:720px !important; }
+#customgpt_assistant iframe{ display:block; width:100%; }
+.assistant-side h2{ margin:0 0 14px; color:var(--purple); font-size:22px; font-weight:700; }
+.assistant-side h2 + ul{ margin-bottom:30px; }
+.assistant-examples li{ margin-bottom:10px; padding:12px 16px; border-radius:12px; background:#f2f2f2; color:#222; font-size:15px; }
+.assistant-notes li{ position:relative; margin-bottom:12px; padding-left:26px; font-size:15px; line-height:1.5; color:#333; }
+.assistant-notes li::before{ content:""; position:absolute; left:0; top:4px; width:16px; height:16px; border-radius:50%; background:var(--blue); }
+.assistant-side__cta .btn{ width:100%; }
+@media (max-width:1024px){ .assistant-grid{ grid-template-columns:1fr; } .assistant-hero h1{ font-size:34px; } }
+@media (max-width:767px){ .navigation__right .try-ai{ margin-left:0; padding:8px 12px; font-size:13px; } .navigation__right .try-ai svg{ display:none; } #customgpt_assistant .cgptcb-embed-chat-box-container{ height:600px !important; } }
 
 /* ------------------------------------------------------------
    Responsive

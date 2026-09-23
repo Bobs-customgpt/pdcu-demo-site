@@ -189,5 +189,6 @@
     window.CustomGPTDemo = { ask: runSearch, showSetup: function () { panel.hidden = false; } };
   }
 
-  if (pid && pkey) loadAgent(); else showPlaceholder();
+  if (document.body.hasAttribute('data-no-float')) { window.CustomGPTDemo = { ask: runSearch }; }
+  else if (pid && pkey) loadAgent(); else showPlaceholder();
 })();

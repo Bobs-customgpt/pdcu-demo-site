@@ -5,7 +5,8 @@ A static visual replica of the [People Driven Credit Union homepage](https://www
 Not affiliated with or endorsed by People Driven Credit Union. Internal sales/demo prop only; do not present it as the customer's real site. Rates and copy were captured from the public homepage on 2026-09-23.
 
 ## Structure
-- `index.html` — the full page
+- `index.html` — the full homepage
+- `assistant.html` — "Try our AI Assistant" page: the live chat agent (100838) embedded inline with `embed.js` in a 720px card, with example questions; the floating bubble is suppressed there via `data-no-float` on `<body>`. Linked from the blue header button next to LOGIN.
 - `css/styles.css` — stylesheet (recreates the BloomCU theme look; colors, Gotham type, gradients, cards)
 - `css/icons.css` — header icon data-URIs pulled from the live site's CSS
 - `js/main.js` — carousels, dropdowns, login popover, mobile menu, footer accordions, CustomGPT loader
