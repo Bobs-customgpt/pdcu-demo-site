@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>IACP | CRIS Demo — CustomGPT.ai</title>
+<meta name="description" content="CustomGPT.ai sales demo replica for International Association of Chiefs of Police featuring CRIS AI assistant, SGE search, and live chat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script src="config.js"></script>
+</head>
+<body>
+<div class="demo-banner">CustomGPT.ai sales demo for IACP &middot; <span>Not affiliated with or endorsed by International Association of Chiefs of Police. Internal demo prop only.</span></div>
+<div class="topbar"><div class="container">
+  <div>Demo replica of International Association of Chiefs of Police public site</div>
+  <div><a href="https://www.theiacp.org/" target="_blank" rel="noopener">theiacp.org</a></div>
+</div></div>
+<header class="site-header"><div class="container">
+  <a class="logo-mark logo" href="index.html"><span class="logo-badge">IACP</span> IACP</a>
+  <div class="demo-hsearch">
+    <form id="demo-search-form" action="#" method="get" role="search">
+      <input id="demo-hsearch" name="q" autocomplete="off" placeholder="Search IACP with AI (e.g. conference, membership, training)" aria-label="Search IACP with AI (e.g. conference, membership, training)">
+      <span class="ai-tag">AI</span>
+      <button class="go" type="submit" aria-label="Search">&#9906;</button>
+    </form>
+    <div id="demo-searchdrop" class="demo-searchdrop" role="dialog" aria-label="AI search results">
+      <div class="sd-head"><span><span class="lab">AI Search</span> &nbsp;<span id="demo-sd-q"></span></span>
+        <button type="button" class="sd-close" onclick="demoCloseSearchDrop()" aria-label="Close">×</button>
+      </div>
+      <div id="customgpt_search"></div>
+    </div>
+  </div>
+<button class="nav-toggle" type="button" aria-label="Menu">Menu</button>
+  <nav class="nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="https://www.theiacp.org/membership" target="_blank" rel="noopener">Membership</a>
+    <a href="https://www.theiacp.org/events" target="_blank" rel="noopener">Events</a>
+    <a href="https://www.theiacp.org/conference" target="_blank" rel="noopener">Conference</a>
+    <a href="https://www.theiacp.org/membership" class="btn" target="_blank" rel="noopener">Join IACP</a>
+  </nav>
+</div></header>
+
+<section class="hero"><div class="container">
+  <div>
+    <div class="hero-kicker">IACP · CRIS demo</div>
+    <h1>Police leadership knowledge, on demand</h1>
+    <p>Find events, membership value, and policy resources — use AI search for ranked sources, or ask CRIS for a guided conversation trained on IACP content.</p>
+    <div class="hero-actions">
+      <a class="btn-primary btn-try" href="assistant.html">Try CRIS AI assistant</a>
+      <a class="btn-secondary" href="https://www.theiacp.org/membership" target="_blank" rel="noopener">Join IACP</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-top">
+      <div class="agent-pill">CRIS</div>
+      <p>AI assistant for IACP public content</p>
+      <a class="btn-primary btn-try" href="assistant.html" style="margin-top:0.5rem">Try CRIS AI assistant</a>
+    </div>
+    <div class="meta">
+      <strong>Ask CRIS</strong>
+      <span>Try: “What events are coming up?” or “How do I become an IACP member?”</span>
+    </div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">What leaders ask CRIS</p>
+      <h2>Events, membership, and training</h2>
+      <p>Sample topic cards for the demo. On a live call, the agent answers from indexed public IACP website content.</p>
+    </div>
+  </div>
+  <div class="grid grid-3">
+    <article class="card">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <span class="tag">Events</span>
+        <h3>Upcoming events</h3>
+        <p>Browse the conference schedule, midyears, and specialty events for law enforcement leaders.</p>
+      </div>
+    </article>
+    <article class="card">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <span class="tag">Membership</span>
+        <h3>Join IACP</h3>
+        <p>Understand membership eligibility, benefits, and how to unlock the full CRIS experience.</p>
+      </div>
+    </article>
+    <article class="card">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <span class="tag">Training</span>
+        <h3>Professional development</h3>
+        <p>Find training programs and leadership resources for chiefs and command staff.</p>
+      </div>
+    </article>
+  </div>
+</div></section>
+
+<section class="section alt"><div class="container">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Why this demo matters for IACP</p>
+      <h2>Public answers → member unlock CTA</h2>
+    </div>
+  </div>
+  <div class="value-strip">
+    <div class="value-item"><strong>Public knowledge search</strong><span>Visitors ask about events and association resources without hunting menus.</span></div>
+    <div class="value-item"><strong>Member unlock story</strong><span>Contrast limited guest answers with richer member-authenticated responses.</span></div>
+    <div class="value-item"><strong>Conference CTAs</strong><span>Route interest to Annual Conference and events registration.</span></div>
+    <div class="value-item"><strong>Multilingual reach</strong><span>Position CRIS as a 24/7 knowledge assistant across IACP content.</span></div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Priority CTAs</p>
+      <h2>Join · Events · Education · Contact</h2>
+    </div>
+  </div>
+  <div class="cta-strip">
+    <a class="cta-pill" href="https://www.theiacp.org/membership" target="_blank" rel="noopener">Join IACP</a>
+    <a class="cta-pill" href="https://www.theiacp.org/events" target="_blank" rel="noopener">Events</a>
+    <a class="cta-pill" href="https://www.theiacp.org/training" target="_blank" rel="noopener">Training</a>
+    <a class="cta-pill" href="https://www.theiacp.org/contact" target="_blank" rel="noopener">Contact</a>
+  </div>
+</div></section>
+
+<section class="section alt"><div class="container">
+  <div class="cta-band">
+    <div>
+      <h2>Ask CRIS</h2>
+      <p>Open the chat bubble or full-page assistant for questions like “What events are coming up?” or “How do I join IACP?”</p>
+    </div>
+    <a class="btn-primary btn-try" href="assistant.html">Try CRIS AI assistant</a>
+  </div>
+</div></section>
+
+<footer class="site-footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo-mark" style="color:#fff;margin-bottom:0.75rem;"><span class="logo-badge">IACP</span> IACP</div>
+      <p style="margin:0;font-size:0.9rem;max-width:22rem;">Demo marketing replica for a CustomGPT.ai conversation with IACP. Not the live theiacp.org site.</p>
+    </div>
+    <div>
+      <h4>On this demo</h4>
+      <a href="index.html">Home</a>
+      <a href="assistant.html">Try CRIS AI assistant</a>
+    </div>
+    <div>
+      <h4>IACP (public)</h4>
+      <a href="https://www.theiacp.org/" target="_blank" rel="noopener">theiacp.org</a>
+      <a href="https://www.theiacp.org/membership" target="_blank" rel="noopener">Join IACP</a>
+      <a href="https://www.theiacp.org/events" target="_blank" rel="noopener">Events</a>
+    </div>
+    <div>
+      <h4>Try the assistant</h4>
+      <p style="margin:0;font-size:0.9rem;">Use the floating chat bubble (bottom-right), the header AI search bar, or <a href="assistant.html" style="display:inline;color:#fff;text-decoration:underline;">Try CRIS AI assistant</a>.</p>
+    </div>
+  </div>
+  <div class="footer-note"><strong>Demo disclaimer:</strong> This is a static marketing replica for a CustomGPT.ai sales demo. Not affiliated with or endorsed by International Association of Chiefs of Police. Content themes drawn from publicly available pages. Not IACP&rsquo;s live site.</div>
+</div></footer>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Try CRIS AI assistant | IACP Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script src="config.js"></script>
+</head>
+<body class="assistant-page">
+<div class="demo-banner">CustomGPT.ai sales demo for IACP &middot; <span>Not affiliated with or endorsed by International Association of Chiefs of Police.</span></div>
+<div class="assistant-bar"><div class="container">
+  <a class="back" href="index.html">&larr; Back to IACP demo</a>
+  <strong style="color:var(--navy)">Try CRIS AI assistant</strong>
+</div></div>
+<div class="assistant-frame">
+  <div id="customgpt_chat"></div>
+</div>
+<script>
+(function () {
+  var cfg = window.DEMO_CONFIG || {};
+  var params = new URLSearchParams(window.location.search);
+  var pid = params.get('p_id') || cfg.p_id || '';
+  var pkey = params.get('p_key') || cfg.p_key || '';
+  function pending(v) { return !v || String(v).toUpperCase() === 'PENDING'; }
+  if (pending(pid) || pending(pkey)) {
+    document.getElementById('customgpt_chat').innerHTML =
+      '<div style="padding:2rem;font-family:Inter,system-ui,sans-serif;color:#5a6570;">' +
+      '<h2 style="color:#162134;margin-top:0;">Agent keys pending</h2>' +
+      '<p>Set <code>p_id</code> and <code>p_key</code> in <code>config.js</code> (or pass ?p_id=&amp;p_key=) to load the full-page CRIS embed.</p>' +
+      '</div>';
+    return;
+  }
+  var s = document.createElement('script');
+  s.src = 'https://cdn.customgpt.ai/js/embed.js';
+  s.defer = true;
+  s.setAttribute('div_id', 'customgpt_chat');
+  s.setAttribute('p_id', String(pid));
+  s.setAttribute('p_key', String(pkey));
+  document.body.appendChild(s);
+})();
+</script>
+</body>
+</html>

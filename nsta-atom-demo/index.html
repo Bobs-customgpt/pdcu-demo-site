@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>NSTA | Atom Demo — CustomGPT.ai</title>
+<meta name="description" content="CustomGPT.ai sales demo replica for National Science Teaching Association featuring Atom AI assistant, SGE search, and live chat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script src="config.js"></script>
+</head>
+<body>
+<div class="demo-banner">CustomGPT.ai sales demo for NSTA &middot; <span>Not affiliated with or endorsed by National Science Teaching Association. Internal demo prop only.</span></div>
+<div class="topbar"><div class="container">
+  <div>Demo replica of National Science Teaching Association public site</div>
+  <div><a href="https://www.nsta.org/" target="_blank" rel="noopener">nsta.org</a></div>
+</div></div>
+<header class="site-header"><div class="container">
+  <a class="logo-mark logo" href="index.html"><span class="logo-badge">NSTA</span> NSTA</a>
+  <div class="demo-hsearch">
+    <form id="demo-search-form" action="#" method="get" role="search">
+      <input id="demo-hsearch" name="q" autocomplete="off" placeholder="Search NSTA with AI (e.g. conference, lesson plans, PD)" aria-label="Search NSTA with AI (e.g. conference, lesson plans, PD)">
+      <span class="ai-tag">AI</span>
+      <button class="go" type="submit" aria-label="Search">&#9906;</button>
+    </form>
+    <div id="demo-searchdrop" class="demo-searchdrop" role="dialog" aria-label="AI search results">
+      <div class="sd-head"><span><span class="lab">AI Search</span> &nbsp;<span id="demo-sd-q"></span></span>
+        <button type="button" class="sd-close" onclick="demoCloseSearchDrop()" aria-label="Close">×</button>
+      </div>
+      <div id="customgpt_search"></div>
+    </div>
+  </div>
+<button class="nav-toggle" type="button" aria-label="Menu">Menu</button>
+  <nav class="nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="https://www.nsta.org/membership" target="_blank" rel="noopener">Membership</a>
+    <a href="https://www.nsta.org/conferences-and-events" target="_blank" rel="noopener">Conferences</a>
+    <a href="https://portal.nsta.org/professional-learning" target="_blank" rel="noopener">Professional Learning</a>
+    <a href="https://www.nsta.org/membership" class="btn" target="_blank" rel="noopener">Join NSTA</a>
+  </nav>
+</div></header>
+
+<section class="hero"><div class="container">
+  <div>
+    <div class="hero-kicker">NSTA · Science teaching demo</div>
+    <h1>Science teaching resources, searchable in seconds</h1>
+    <p>Explore lesson ideas, conferences, and professional learning — use the top AI search bar for ranked answers, or chat with Atom for a guided conversation.</p>
+    <div class="hero-actions">
+      <a class="btn-primary btn-try" href="assistant.html">Try Atom AI assistant</a>
+      <a class="btn-secondary" href="https://www.nsta.org/membership" target="_blank" rel="noopener">Join NSTA</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-top">
+      <div class="agent-pill">Atom</div>
+      <p>AI assistant for NSTA public content</p>
+      <a class="btn-primary btn-try" href="assistant.html" style="margin-top:0.5rem">Try Atom AI assistant</a>
+    </div>
+    <div class="meta">
+      <strong>Ask Atom</strong>
+      <span>Try: “When is the next NSTA National Conference?” or “What lesson plans does NSTA offer for middle school?”</span>
+    </div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">What educators ask Atom</p>
+      <h2>Conferences, lessons, and professional growth</h2>
+      <p>Sample topic cards for the demo. On a live call, the agent answers from indexed public NSTA website content.</p>
+    </div>
+  </div>
+  <div class="grid grid-3">
+    <article class="card">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <span class="tag">Conferences</span>
+        <h3>National Conference</h3>
+        <p>Find dates, locations, and registration paths for NSTA’s next national and area conferences.</p>
+      </div>
+    </article>
+    <article class="card">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <span class="tag">Classroom</span>
+        <h3>Lesson plans &amp; resources</h3>
+        <p>Browse publicly available teaching resources and classroom-ready science content themes.</p>
+      </div>
+    </article>
+    <article class="card">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <span class="tag">Membership</span>
+        <h3>Why join NSTA</h3>
+        <p>Membership unlocks deeper answers, personalized PD pathways, and member-only advantages.</p>
+      </div>
+    </article>
+  </div>
+</div></section>
+
+<section class="section alt"><div class="container">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Why this demo matters for NSTA</p>
+      <h2>Content → personalization → join / event CTA</h2>
+    </div>
+  </div>
+  <div class="value-strip">
+    <div class="value-item"><strong>Content library search</strong><span>Teachers ask natural-language questions across conferences, lessons, and PD pages.</span></div>
+    <div class="value-item"><strong>Personalization</strong><span>Route elementary, middle, and high school educators to the right resources.</span></div>
+    <div class="value-item"><strong>Event next steps</strong><span>After an answer, surface National Conference registration and area events.</span></div>
+    <div class="value-item"><strong>Membership story</strong><span>Show how richer answers and chat history support the Join NSTA path.</span></div>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Priority CTAs</p>
+      <h2>Join · Events · Education · Contact</h2>
+    </div>
+  </div>
+  <div class="cta-strip">
+    <a class="cta-pill" href="https://www.nsta.org/membership" target="_blank" rel="noopener">Join NSTA</a>
+    <a class="cta-pill" href="https://www.nsta.org/conferences-and-events" target="_blank" rel="noopener">Conferences &amp; Events</a>
+    <a class="cta-pill" href="https://portal.nsta.org/professional-learning" target="_blank" rel="noopener">Professional Learning</a>
+    <a class="cta-pill" href="https://www.nsta.org/overview" target="_blank" rel="noopener">About NSTA</a>
+  </div>
+</div></section>
+
+<section class="section alt"><div class="container">
+  <div class="cta-band">
+    <div>
+      <h2>Ask Atom</h2>
+      <p>Open the chat bubble or full-page assistant for questions like “When and where is NSTA’s next conference?” or “Can NSTA help with professional development?”</p>
+    </div>
+    <a class="btn-primary btn-try" href="assistant.html">Try Atom AI assistant</a>
+  </div>
+</div></section>
+
+<footer class="site-footer"><div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="logo-mark" style="color:#fff;margin-bottom:0.75rem;"><span class="logo-badge">NSTA</span> NSTA</div>
+      <p style="margin:0;font-size:0.9rem;max-width:22rem;">Demo marketing replica for a CustomGPT.ai conversation with NSTA. Not the live nsta.org site.</p>
+    </div>
+    <div>
+      <h4>On this demo</h4>
+      <a href="index.html">Home</a>
+      <a href="assistant.html">Try Atom AI assistant</a>
+    </div>
+    <div>
+      <h4>NSTA (public)</h4>
+      <a href="https://www.nsta.org/" target="_blank" rel="noopener">nsta.org</a>
+      <a href="https://www.nsta.org/membership" target="_blank" rel="noopener">Join NSTA</a>
+      <a href="https://www.nsta.org/conferences-and-events" target="_blank" rel="noopener">Conferences &amp; Events</a>
+    </div>
+    <div>
+      <h4>Try the assistant</h4>
+      <p style="margin:0;font-size:0.9rem;">Use the floating chat bubble (bottom-right), the header AI search bar, or <a href="assistant.html" style="display:inline;color:#fff;text-decoration:underline;">Try Atom AI assistant</a>.</p>
+    </div>
+  </div>
+  <div class="footer-note"><strong>Demo disclaimer:</strong> This is a static marketing replica for a CustomGPT.ai sales demo. Not affiliated with or endorsed by National Science Teaching Association. Content themes drawn from publicly available pages. Not NSTA&rsquo;s live site.</div>
+</div></footer>
+<script src="js/main.js"></script>
+</body>
+</html>
