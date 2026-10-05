@@ -4,6 +4,11 @@ A static visual replica of the [People Driven Credit Union homepage](https://www
 
 Not affiliated with or endorsed by People Driven Credit Union. Internal sales/demo prop only; do not present it as the customer's real site. Rates and copy were captured from the public homepage on 2026-09-23.
 
+## Safety Features
+- **Sticky demo banner**: A prominent purple-to-blue gradient banner at the top of every page clearly identifies this as a CustomGPT.ai demonstration environment and links to the real PDCU website.
+- **Disabled login form**: The Online Banking login popover shows "Demo Only — Login Disabled" instead of collecting credentials, directing users to the real site.
+- **Safe meta tags**: Both pages include `<meta name="robots" content="noindex, nofollow">` to prevent search engine indexing.
+
 ## Structure
 - `index.html` — the full homepage
 - `assistant.html` — "Try our AI Assistant" page: the live chat agent (100838) embedded inline with `embed.js` in a 720px card, with example questions; the floating bubble is suppressed there via `data-no-float` on `<body>`. Linked from the blue header button next to LOGIN.
