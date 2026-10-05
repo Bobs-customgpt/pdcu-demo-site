@@ -58,6 +58,18 @@ button{ font-family:inherit; cursor:pointer; }
 .g-l-wrapper{ display:flow-root; margin:0 auto; max-width:1140px; padding:0 20px; }
 
 /* ------------------------------------------------------------
+   Demo Safety Banner
+   ------------------------------------------------------------ */
+.demo-banner{
+  position:sticky; top:0; z-index:100; width:100%; padding:12px 20px; 
+  background:linear-gradient(110deg,#462e8d 0%,#046e9d 100%); color:#fff; text-align:center; font-size:15px; line-height:1.4; box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+.demo-banner strong{ font-weight:700; }
+.demo-banner a{ color:#fff; text-decoration:underline; }
+.demo-banner a:hover{ color:#dedede; }
+@media (max-width:767px){ .demo-banner{ font-size:13px; padding:10px 16px; } }
+
+/* ------------------------------------------------------------
    Header
    ------------------------------------------------------------ */
 .g-header{ position:relative; z-index:50; background:#fff; }
