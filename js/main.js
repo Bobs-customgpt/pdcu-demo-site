@@ -67,7 +67,10 @@
   if (loginBtn && loginBox) {
     loginBtn.addEventListener('click', function (e) { e.stopPropagation(); loginBox.classList.toggle('is-active'); });
     loginBox.addEventListener('click', function (e) { e.stopPropagation(); });
-    loginBox.querySelector('form').addEventListener('submit', function (e) { e.preventDefault(); alert('Demo site: online banking login is disabled.'); });
+    var loginForm = loginBox.querySelector('form');
+    if (loginForm) {
+      loginForm.addEventListener('submit', function (e) { e.preventDefault(); alert('Demo site: online banking login is disabled.'); });
+    }
   }
   document.addEventListener('click', function (e) {
     if (loginBox && !e.target.closest('.navigation__right')) loginBox.classList.remove('is-active');
@@ -163,10 +166,19 @@
     s.src = 'https://cdn.customgpt.ai/js/chat.js';
     s.defer = true;
     s.onload = function () {
-      if (window.CustomGPT && typeof window.CustomGPT.init === 'function') {
-        window.CustomGPT.init({ p_id: pid, p_key: pkey });
+      try {
+        if (window.CustomGPT && typeof window.CustomGPT.init === 'function') {
+          window.CustomGPT.init({ p_id: pid, p_key: pkey });
+        } else if (window.CustomGPT && typeof window.CustomGPT.getInstance === 'function') {
+          window.CustomGPT.getInstance({ p_id: pid, p_key: pkey });
+        } else {
+          console.error('CustomGPT chat.js loaded but no init/getInstance');
+        }
+      } catch (err) {
+        console.error('CustomGPT init failed', err);
       }
     };
+    s.onerror = function () { console.error('Failed to load chat.js'); };
     document.body.appendChild(s);
     window.CustomGPTDemo = { ask: runSearch };
   }
